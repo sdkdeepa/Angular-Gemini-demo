@@ -5,5 +5,5 @@ then run the following command.
    -  `npm install`
    -  `npm start`
 
-Your app should like  ![this](/app.png)
+Your app should like 
 
