@@ -3,24 +3,21 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { GeminiService } from './gemini.service';
-import { SkeletonComponent } from './skeleton/skeleton.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SkeletonComponent, FormsModule, CommonModule],
+  imports: [RouterOutlet, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'gemini-inte';
-
+  title = 'gemini-integration';
   prompt: string = '';
-
-  geminiService: GeminiService = inject(GeminiService);
-
   loading: boolean = false;
-
   chatHistory: any[] = [];
+  
+  geminiService: GeminiService = inject(GeminiService);
+  
   constructor() {
     this.geminiService.getMessageHistory().subscribe((res) => {
       if(res) {

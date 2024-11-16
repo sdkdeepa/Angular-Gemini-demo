@@ -1,19 +1,56 @@
+<!-- app.component.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular Gemini</title>
+</head> 
+<body>
 <div class="chat-container">
   <header class="chat-header">
-    <h1>Angular-Gemini AI Chat bot</h1>
-  </header>
+       <div class="logo-container">
+          <img src="../assets/logo.png" alt="Chatbot Logo" />
+    </div>
+    <h1> Hello User!
+    </h1>
+  </header> 
   <main class="chat-history">
     <ng-container *ngFor="let item of chatHistory">
-      <div class="messages" [ngClass]="{'blue': item.from === 'user', 'green': item.from === 'bot'}">
-        <span class="responses" [innerHTML]="formatText(item.message)"></span>
+      <div
+        class="messages"
+        [ngClass]="{
+          question: item?.from === 'user',
+          answer: item?.from === 'bot'
+        }"
+      >
+        <span
+          class="responses"
+          [innerHTML]="formatText(item?.message)"
+        ></span>
       </div>
     </ng-container>
-    <ng-container *ngIf="loading">
-      <app-skeleton></app-skeleton>
-    </ng-container>
+    <div *ngIf="loading" class="loading-indicator">Loading...</div>
   </main>
   <footer class="chat-input">
-    <input type="text" id="message-input" (keyup.enter)="sendData()" placeholder="Enter a prompt here..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
-    <button id="send-button" (click)="sendData()"  [disabled]="loading">Send</button>
+    <input
+      type="text"
+      id="message-input"
+      (keyup.enter)="sendData()"
+      placeholder="Ask Gemini"
+      [(ngModel)]="prompt"
+      [disabled]="loading"
+      autocomplete="off"
+    />
+
+    <button id="send-button" (click)="sendData()" [disabled]="loading">
+      Send
+    </button>
   </footer>
 </div>
+<footer class="warning">
+  <p>Gemini can make mistakes, so double-check it.</p>
+</footer>
+</body>
+</html>
