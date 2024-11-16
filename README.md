@@ -5,5 +5,4 @@ then run the following command.
    -  `npm install`
    -  `npm start`
 
-Your app should like  ![this](https://github.com/sdkdeepa/Angular-Gemini-demo/blob/main/Screenshot.png)
-
+Your app should like  ![this](AppDemo.gif)
